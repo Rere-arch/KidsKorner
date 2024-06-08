@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIDS KORNER</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d3f3d3;
+            color: #000;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            background-color: #4caf50;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo img {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+        }
+        .search-bar {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+        .search-bar input {
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+            max-width: 290px;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        .menu {
+            display: flex;
+            align-items: center;
+        }
+        .menu ul {
+            list-style-type: none;
+            display: flex;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+        }
+        .menu ul li {
+            display: inline;
+        }
+        .menu ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+        }
+        @media (max-width: 768px) {
+            .search-bar {
+                padding: 10px 0;
+            }
+            .menu {
+                display: none;
+                width: 100%;
+                text-align: center;
+            }
+            .menu ul {
+                flex-direction: column;
+                display: none;
+                gap: 10px;
+                padding-right: 0;
+                background-color: #4caf50;
+            }
+            .menu ul li {
+                margin: 10px 0;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .menu.active {
+                display: flex;
+                flex-direction: column;
+            }
+            .menu.active ul {
+                display: flex;
+            }
+        }
+        .welcome h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        .welcome p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .sale {
+            background-color: #4caf50;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        .sale h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .sale p {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .sale button {
+            background-color: white;
+            color: #4caf50;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .products img {
+            max-width: 200px;
+            border: 2px solid #4caf50;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 30px;
+            margin-top: 50px;
+            background-color: #4CAF50;
+            border: 3px #4caf50;
+        }
+        .product {
+            background-color: #e6ffe6;
+            border: 1px solid #66ff66;
+            margin: 10px;
+            padding: 10px;
+            width: 200px;
+            text-align: center;
+        }
+        .product img {
+            width: 156px;
+            height: 156px;
+        }
+        .product h3 {
+            font-size: 18px;
+        }
+        .product button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .about-us h1 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            margin-top: 50px;
+            background-color: #4CAF50;
+            border: 3px #4caf50;
+        }
+        footer {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+        footer p {
+            margin: 0;
+        }
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 70px;
+            flex-wrap: wrap;
+        }
+        .social-media div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .social-media img {
+            width: 24px;
+            height: 24px;
+        }
+        @media (max-width: 768px) {
+            .social-media {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .social-media div {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="KIDS KORNER Logo">
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search" id="searchInput">
+            <button onclick="searchProducts()">Search</button>
+        </div>
+        <nav>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="#home">HOME</a></li>
+                    <li><a href="#products">PRODUCTS</a></li>
+                    <li><a href="#about">ABOUT US</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                    <li><a href="#"><img src="cart-icon.png" alt="Cart"></a></li>
+                    <li><a href="#"><img src="user-icon.png" alt="User"></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main id="home">
+        <section class="welcome">
+            <h1>WELCOME TO KIDSKORNER!</h1>
+            <p>FUN AND FUNCTIONAL FINDS FOR LITTLE ONE'S</p>
+            <p>Search, explore, and buy for your kids. A lot of entertainment toys, kid's books, and other things that can help your kids to enjoy and learn</p>
+            <div class="sale">
+                <h2>HOLIDAY SALE!</h2>
+                <p>50% OFF</p>
+                <button>SHOP NOW!!</button>
+            </div>
+        </section>
+        <section class="products" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 20px;">
+            <img src="blocks.png" alt="Blocks" style="max-width: 200px; border: 2px solid #4caf50; border-radius: 10px; padding: 10px;">
+            <img src="lego-house.png" alt="Lego House" style="max-width: 200px; border: 2px solid #4caf50; border-radius: 10px; padding: 10px;">
+            <img src="art-supplies.png" alt="Art Supplies" style="max-width: 200px; border: 2px solid #4caf50; border-radius: 10px; padding: 10px;">
+            <img src="baby-bottles.png" alt="Baby Bottles" style="max-width: 200px; border: 2px solid #4caf50; border-radius: 10px; padding: 10px;">
+        </section>
+
+        <h1 id="products" class="section-title">PRODUCTS</h1>
+        <section class="products" id="productSection"></section>
+    </main>
+    <div id="about" class="about-us">
+        <h1>ABOUT US</h1>
+        <div class="logo" style="padding-left: 20px; border-radius: 50px;">
+            <img src="logo.png" alt="KIDS KORNER Logo" style="height: 100px; width: 100px; border-radius: 50%;">
+        </div>
+        <p>Welcome to Kids Korner, your one-stop destination for fun and functional finds for your little ones! Our mission is to provide high-quality, safe, and engaging <br> 
+            products that inspire learning and play. From educational toys to art supplies, we have everything you need to keep your kids entertained and happy. <br>
+            Explore our wide selection and discover the perfect items for your children today!
+        </p>
+        <p>This online shop was created by Rachel Ramos. It was established around the second quarter of year 2024.</p>
+    </div>
+    <footer id="contact">
+        <p>&copy; 2024 KIDS KORNER. All rights reserved.</p>
+        <div class="social-media">
+            <div>
+                <img src="twitter-icon.png" alt="Twitter">
+                <span>@kidskorner</span>
+            </div>
+            <div>
+                <img src="facebook-icon.png" alt="Facebook">
+                <span>/KIDSKORNER</span>
+            </div>
+            <div>
+                <img src="phone-icon.png" alt="Phone">
+                <span>912-9913-409</span>
+            </div>
+            <div>
+                <img src="email-icon.png" alt="Email">
+                <span>kidskorner@gmail.com</span>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const products = [
+            { id: 1, name: 'Mr. Potato Head', image: 'mr_potato_head.jpg', oldPrice: '$300', price: '$150' },
+            { id: 2, name: 'Pop It with Numbers and Colors', image: 'pop_it.png', oldPrice: '$100', price: '$50' },
+            { id: 3, name: 'Squishmallows', image: 'squishmallows.jpg', oldPrice: '$500', price: '$250' },
+            { id: 4, name: 'Pacifiers and Bottles', image: 'pacifiers_bottles.jpg', oldPrice: '$600', price: '$300' },
+            { id: 5, name: 'Puzzles with Shape Sorters', image: 'shape_sorters.jpg', oldPrice: '$400', price: '$200' },
+            { id: 6, name: 'Building Blocks', image: 'building_blocks.jpg', oldPrice: '$500', price: '$250' },
+            { id: 7, name: 'Construction Toys', image: 'construction_toys.jpg', oldPrice: '$400', price: '$200' },
+            { id: 8, name: 'Crayons and Paints', image: 'crayons_paints.jpg', oldPrice: '$200', price: '$100' },
+            { id: 9, name: 'Action Figures', image: 'action-figures.jpg', oldPrice: '$700', price: '$350' },
+            { id: 10, name: 'Board Games and Puzzles', image: 'boardgames.jpg', oldPrice: '$500', price: '$250' },
+            { id: 11, name: 'Gaming Consoles', image: 'gamingconsole.jpg', oldPrice: '$1000', price: '$500' },
+            { id: 12, name: 'Musical Instruments and Equipments', image: 'musical.jpg', oldPrice: '$1000', price: '$500' },
+            { id: 13, name: 'Art Materials', image: 'arts.jpg', oldPrice: '$500', price: '$250' },
+            { id: 14, name: 'Crafting Kit', image: 'crafting.jpg', oldPrice: '$100', price: '$50' },
+            { id: 15, name: 'Accessories', image: 'accessories.jpg', oldPrice: '$100', price: '$50' },
+          
+        ];
+
+        function displayProducts(productsToDisplay) {
+            const productSection = document.getElementById('productSection');
+            productSection.innerHTML = '';
+            productsToDisplay.forEach(product => {
+                productSection.innerHTML += `
+                    <div class="product">
+                        <img src="${product.image}" alt="${product.name}">
+                        <h3>${product.name}<br><del>${product.oldPrice}</del> ${product.price}</h3>
+                        <button onclick="buyProduct(${product.id})">Buy</button>
+                        <button onclick="addToCart(${product.id})">Add to Cart</button>
+                    </div>
+                `;
+            });
+        }
+
+        function searchProducts() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filteredProducts = products.filter(product => product.name.toLowerCase().includes(query));
+            displayProducts(filteredProducts);
+        }
+
+        function buyProduct(productId) {
+            alert('Product bought: ' + productId);
+        }
+
+        function addToCart(productId) {
+            alert('Product added to cart: ' + productId);
+        }
+
+        window.onload = function() {
+            displayProducts(products);
+        }
+
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            menu.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
